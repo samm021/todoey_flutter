@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey_flutter/models/task_data.dart';
 
 class AddTask extends StatelessWidget {
-  final Function addTask;
-
-  AddTask(this.addTask);
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +52,8 @@ class AddTask extends StatelessWidget {
                 color: Colors.lightBlueAccent,
                 textColor: Colors.white,
                 onPressed: () {
-                  addTask(taskInput);
+                  Provider.of<TaskData>(context).addTask(taskInput);
+                  Navigator.pop(context);
                 },
                 child: Text('Add',
                   style: TextStyle(
